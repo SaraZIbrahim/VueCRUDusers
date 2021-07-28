@@ -30,11 +30,11 @@
           <span v-if="submitted && $v.user.ln.$error" class="errorMsg">Please Enter User Last Name</span>
         </b-form-group>
         <b-form-group
-          id="input-group-2"
+          id="input-group-3"
           label="User Age:"
-          label-for="input-2">
+          label-for="input-3">
           <b-form-input
-            id="input-2"
+            id="input-3"
             v-model="user.age"
             type="number"
             required
@@ -43,11 +43,11 @@
           <span v-if="submitted && $v.user.age.$error" class="errorMsg">Please Enter User Age</span>
         </b-form-group>
         <b-form-group
-          id="input-group-3"
+          id="input-group-4"
           label="User Email:"
-          label-for="input-3">
+          label-for="input-4">
           <b-form-input
-            id="input-3"
+            id="input-4"
             v-model="user.email"
             type="email"
             required
@@ -59,11 +59,11 @@
           </div>
         </b-form-group>
         <b-form-group
-          id="input-group-4"
+          id="input-group-5"
           label="User Company Name:"
-          label-for="input-4">
+          label-for="input-5">
           <b-form-input
-            id="input-4"
+            id="input-5"
             v-model="user.Companyname"
             type="text"
             required
