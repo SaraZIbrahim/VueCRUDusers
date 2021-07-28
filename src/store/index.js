@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setLocalStorage, getLocalStorage } from '@/core/utils'
+import { setLocalStorage, getLocalStorage, isThereADuplicate } from '@/core/utils'
 
 Vue.use(Vuex)
 
@@ -10,10 +10,11 @@ export default new Vuex.Store({
   },
   mutations: {
     updateEmployee (state, employee) {
-      if (!employee.isEdit) {
+      if (!employee.isEdit && !isThereADuplicate(state.listEmployee, employee.id)) {
         state.listEmployee.push(employee)
-      } else {
+      } else if (employee.isEdit) {
         const editEmp = state.listEmployee.find((item) => { return item.id === employee.id })
+        editEmp.fn = employee.fn
         editEmp.ln = employee.ln
         editEmp.age = employee.age
         editEmp.email = employee.email
