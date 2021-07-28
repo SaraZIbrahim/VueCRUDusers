@@ -3,6 +3,20 @@
     <b-modal id="addNewEmployee" title="Add Employee">
       <b-form>
         <b-form-group
+          id="input-group-6"
+          label="User ID:"
+          label-for="input-6">
+          <b-form-input
+            id="input-6"
+            v-model="user.id"
+            type="text"
+            unique
+            :disabled="user.isEdit"
+            placeholder="Enter User ID">
+          </b-form-input>
+          <span v-if="submitted && $v.user.id.$error" class="errorMsg">Please Enter User ID</span>
+        </b-form-group>
+        <b-form-group
           id="input-group-1"
           label="User First Name:"
           label-for="input-1">
@@ -11,7 +25,6 @@
             v-model="user.fn"
             type="text"
             required
-            :disabled="user.isEdit"
             placeholder="Enter User First Name">
           </b-form-input>
           <span v-if="submitted && $v.user.fn.$error" class="errorMsg">Please Enter User First Name</span>
@@ -107,6 +120,7 @@ export default {
   data () {
     return {
       user: {
+        id: '',
         fn: '',
         ln: '',
         age: '',
@@ -118,6 +132,7 @@ export default {
   },
   validations: {
     user: {
+      id: { required },
       fn: { required },
       ln: { required },
       age: { required, integer },
