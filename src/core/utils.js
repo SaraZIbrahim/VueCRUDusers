@@ -22,3 +22,17 @@ export const clearLocalStorage = (name) => {
   if (!name) return
   return window.localStorage.removeItem(name)
 }
+/**
+ * check duplication
+*/
+export const isThereADuplicate = (list, id) => {
+  for (var i = 0; i <= list.length; i++) {
+    if (list[i] !== undefined) {
+      if (list[i].id === id) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+}
