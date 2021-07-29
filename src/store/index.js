@@ -12,6 +12,7 @@ export default new Vuex.Store({
     updateEmployee (state, employee) {
       if (!employee.isEdit && !isThereADuplicate(state.listEmployee, employee.id)) {
         state.listEmployee.push(employee)
+        setLocalStorage('employeeList', state.listEmployee) // Updated to localStorage
       } else if (employee.isEdit) {
         const editEmp = state.listEmployee.find((item) => { return item.id === employee.id })
         editEmp.fn = employee.fn
@@ -19,8 +20,11 @@ export default new Vuex.Store({
         editEmp.age = employee.age
         editEmp.email = employee.email
         editEmp.Companyname = employee.Companyname
+        setLocalStorage('employeeList', state.listEmployee) // Updated to localStorage
+      } else {
+        console.log('Duplicate User ID')
+        alert('Duplicate User ID', 'title', 'error')
       }
-      setLocalStorage('employeeList', state.listEmployee) // Updated to localStorage
     },
     deleteEmployee (state, employee) {
       state.listEmployee.splice(employee.index, 1)
